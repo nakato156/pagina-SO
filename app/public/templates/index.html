@@ -1,0 +1,193 @@
+{% extends "base.html" %}
+{% block body %}
+<!--
+// v0 by Vercel.
+// https://v0.dev/t/JqRY2cPP1DX
+-->
+
+<style>
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: 'Libre Franklin', sans-serif;
+        --font-sans: 'Libre Franklin';
+    }
+</style>
+<style>
+    body {
+        font-family: 'Libre Franklin', sans-serif;
+        --font-sans: 'Libre Franklin';
+    }
+</style>
+<div class="flex flex-col min-h-[100dvh] bg-[#FFF5E0]">
+    <header class="px-4 lg:px-6 h-14 flex items-center border-b border-[#8DECB4]-700 shadow-md shadow-[#8DECB4]/60">
+        <a class="flex items-center justify-center" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6">
+                <path d="m8 3 4 8 5-5 5 15H2L8 3z"></path>
+            </svg>
+            <span class="sr-only">Acme Inc</span>
+        </a>
+        <nav class="ml-auto flex gap-4 sm:gap-6">
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#">
+                Features
+            </a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#">
+                Pricing
+            </a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#">
+                About
+            </a>
+            <a class="text-sm font-medium hover:underline underline-offset-4" href="#">
+                Contact
+            </a>
+        </nav>
+    </header>
+    <main class="flex flex-col text-[#444444]">
+        <section class="w-full py-12 md:py-24 lg:py-32">
+            <div class="container grid gap-6 lg:grid-cols-[1fr_550px] lg:gap-12 xl:grid-cols-[1fr_650px]">
+                <img src="{{url_for('static', filename='img/principal.jpg')}}" width="550" height="550"
+                    alt="Hero Product"
+                    class="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full" />
+                <div class="flex flex-col justify-center space-y-4">
+                    <div class="space-y-2">
+                        <h1 class="text-black text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
+                            Discover the latest fashion trends
+                        </h1>
+                        <p class="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
+                            Browse our curated collection of high-quality apparel and accessories for all your style
+                            needs.
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-2 min-[400px]:flex-row">
+                        <a class="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
+                            href="#">
+                            Shop Now
+                        </a>
+                        <a class="text-white inline-flex h-10 items-center justify-center rounded-md border border-gray-200 border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
+                            href="#">
+                            Learn More
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-[#141E46] dark:bg-gray-800">
+            <div class="container">
+                <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                    <div class="space-y-2">
+                        <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Featured Products</h2>
+                        <p
+                            class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                            Discover our curated selection of the latest and greatest fashion items.
+                        </p>
+                    </div>
+                </div>
+                <div class="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
+                    {% for producto in productos %}
+                    <div class="group relative overflow-hidden rounded-lg">
+                        <img src="{{producto.imagen}}" width="550" height="550" alt="Product Image"
+                            class="aspect-square w-full object-cover transition-all duration-300 group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 flex flex-col items-start justify-between bg-gradient-to-t from-gray-900/80 to-transparent p-6 text-white opacity-0 transition-all duration-300 group-hover:opacity-100">
+                            <div>
+                                <h3 class="text-xl font-bold">{{producto.nombre}}</h3>
+                                <p class="text-sm">{{producto.precio}}</p>
+                            </div>
+                            <a class="inline-flex h-9 items-center justify-center rounded-md bg-gray-50 px-4 text-sm font-medium text-gray-900 transition-colors hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50"
+                                href="#">
+                                Agregar
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+        <section class="w-full py-12 md:py-24 lg:py-32">
+            <div class="flex flex-col items-center justify-center space-y-4 text-center">
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Categorias</h2>
+                    <p
+                        class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                        Explora las categorias que desees
+                    </p>
+                </div>
+                <div class="mx-auto grid max-w-5xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4 lg:gap-12">
+                    <a class="group relative overflow-hidden rounded-lg" href="#">
+                        <img src="{{url_for('static', filename='img/limpieza.jpg')}}" width="550" height="550"
+                            alt="Category Image"
+                            class="aspect-square w-full object-cover transition-all duration-300 group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-gray-900/80 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                            <h3 class="text-xl font-bold text-white">Limpieza</h3>
+                        </div>
+                    </a>
+                    <a class="group relative overflow-hidden rounded-lg" href="#">
+                        <img src="{{url_for('static', filename='img/hogar.jpg')}}" width="550" height="550"
+                            alt="Category Image"
+                            class="aspect-square w-full object-cover transition-all duration-300 group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-gray-900/80 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                            <h3 class="text-xl font-bold text-white">Hogar</h3>
+                        </div>
+                    </a>
+                    <a class="group relative overflow-hidden rounded-lg" href="#">
+                        <img src="{{url_for('static', filename='img/animales.jpg')}}" width="550" height="550"
+                            alt="Category Image"
+                            class="aspect-square w-full object-cover transition-all duration-300 group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-gray-900/80 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                            <h3 class="text-xl font-bold text-white">Animales</h3>
+                        </div>
+                    </a>
+                    <a class="group relative overflow-hidden rounded-lg" href="#">
+                        <img src="{{url_for('static', filename='img/otros.jpg')}}" width="550" height="550"
+                            alt="Category Image"
+                            class="aspect-square w-full object-cover transition-all duration-300 group-hover:scale-105" />
+                        <div
+                            class="absolute inset-0 flex items-center justify-center bg-gray-900/80 opacity-0 transition-all duration-300 group-hover:opacity-100">
+                            <h3 class="text-xl font-bold text-white">Otros</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="w-full py-12 md:py-24 lg:py-32 bg-[#141E46] dark:bg-gray-800">
+            <div class="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
+                <div class="space-y-2">
+                    <h2 class="text-3xl font-bold tracking-tighter md:text-4xl/tight">Stay up-to-date with our
+                        newsletter</h2>
+                    <p
+                        class="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                        Subscribe to our newsletter to receive the latest updates, exclusive offers, and fashion
+                        inspiration.
+                    </p>
+                </div>
+                <div class="w-full max-w-sm space-y-2">
+                    <form class="flex space-x-2">
+                        <input
+                            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 max-w-lg flex-1"
+                            placeholder="Enter your email" type="email" />
+                        <button
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+                            type="submit">
+                            Subscribe
+                        </button>
+                    </form>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">
+                        We'll never share your email. Read our{" "}
+                        <a class="underline underline-offset-2" href="#">
+                            privacy policy
+                        </a>
+                        .
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+{%endblock%}
