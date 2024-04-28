@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% block body %}
+<!--
+// v0 by Vercel.
+// https://v0.dev/t/Shd0ERD9pRv
+-->
+
+<div class="container mx-auto px-4 md:px-6 py-12 md:py-16">
+  <div class="grid gap-8 md:grid-cols-[1fr_300px] items-start">
+    <div>
+      <h1 class="text-2xl md:text-3xl font-bold">Mi Carrito</h1>
+      <div class="overflow-x-auto">
+        <div class="relative w-full overflow-auto">
+          <table class="w-full caption-bottom text-sm">
+            <thead class="[&amp;_tr]:border-b">
+              <tr class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                  Producto
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                  Precio
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                  Cantidad
+                </th>
+                <th
+                  class="h-12 px-4 text-left align-middle font-medium text-muted-foreground [&amp;:has([role=checkbox])]:pr-0">
+                  Total
+                </th>
+              </tr>
+            </thead>
+            <tbody id="tablaCarrito" class="[&amp;_tr:last-child]:border-0">
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-100 dark:bg-gray-800 dark:text-white rounded-lg p-6 space-y-6">
+      <div class="space-y-2">
+        <h2 class="text-lg font-medium">Resumen de compra</h2>
+        <div class="flex items-center justify-between">
+          <p>Subtotal</p>
+          <p id="subtotal" class="font-medium">$0.00</p>
+        </div>
+        <div class="flex items-center justify-between">
+          <p>Env&iacute;o</p>
+          <p id="costoEnvio" class="font-medium">$0.00</p>
+        </div>
+        <div data-orientation="horizontal" role="none" class="shrink-0 bg-gray-100 h-[1px] w-full"></div>
+        <div class="flex items-center justify-between">
+          <p class="text-lg font-medium">Total</p>
+          <p id="total" class="text-lg font-medium">$0.00</p>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <button
+          id="btnComprar"
+          class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-emerald-500 hover:bg-emerald-500/90 h-11 rounded-md px-8">
+          Seguir con el pago
+        </button>
+        <button
+          id="btnseguir"
+          class="inline-flex items-center justify-center whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent h-11 rounded-md px-8">
+          Continuar comprando
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block script %}
+<script src="{{url_for('static', filename='js/carrito.js')}}"></script>
+{% endblock %}

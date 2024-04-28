@@ -3,6 +3,7 @@ from app.appjwt import require_jwt
 from app.controller import product_ctrl
 from pathlib import Path
 from uuid import uuid4
+from io import BytesIO
 
 path = Path(__file__).parent.parent
 
@@ -20,23 +21,24 @@ def listar_productos(payload):
 def crear_producto(payload):
     data = request.form
     img = request.files["img"]
-    print(list(data.values()))
-    # if not all(data.values()) or not img:
+
+    # if not all(data.values()):
         # return jsonify({"error": "Llene todos los campos"}), 400
 
-    print(img.filename)
-    path_img = Path("static/img/" + f'{uuid4()}_{data.get("nombre")}.jpg')
-    img.save(path / path_img)
+    filename = f'{uuid4()}_{data.get("nombre")}.jpg'
+    path_file = path / Path(f"static/img/{filename}")
+    img.save(path_file)
 
     prod = {
         "nombre": data.get("nombre"),
         "precio": data.get("precio"),
         "descripcion": data.get("descripcion"),
-        "img": str(path_img)
+        "img": path_file
     }
 
     try:
-        producto = product_ctrl.agregar_producto(**prod)
+        producto = product_ctrl.agregar_producto(**prod, filename=filename)
+        path_file.unlink()
         return jsonify({'producto': producto.to_dict()})
     except:
         return jsonify({'error': 'No se pudo crear el producto'})
@@ -47,9 +49,8 @@ def eliminar_producto(uuid, payload):
     if not uuid:
         return jsonify({"error": "No se selecciono ningun producto"}), 400
     
-    try:
-        product_ctrl.eliminar_producto(producto=product_ctrl.Producto(uuid=uuid))
+    if product_ctrl.eliminar_producto(producto=product_ctrl.Producto(uuid=uuid)):
         return {"status": True, "uuid": uuid}
-    except:
+    else:
         return {"status": False, "error": "No se pudo eliminar el producto"}
     

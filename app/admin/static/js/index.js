@@ -1,12 +1,14 @@
 window.onload = init
 
+let modalAgregar;
+
 function init(){
     load_productos()
 
     const btnAddProd = document.getElementById("btn-add-prod")
     const formAddProd = document.getElementById("form-add-prod")
 
-    const modalAgregar = document.getElementById("modalAgregar")
+    modalAgregar = document.getElementById("modalAgregar")
     const preview = document.getElementById("preview")
     const imgPreview = document.getElementById("img")
     const inputImg = document.getElementById("inputImg")
@@ -17,7 +19,7 @@ function init(){
 
         document.body.addEventListener("click", e => {
             if(e.target.id == "btn-close"){
-                modalAgregar.closest()
+                modalAgregar.close()
             }
         })
         preview.addEventListener("dragover", (e)=> {
@@ -68,6 +70,7 @@ function addProd(e){
     })
     .then(res => res.json())
     .then(data => {
+        modalAgregar.close()
         if(data.error){
             Swal.fire({
                 icon: "error",
@@ -100,11 +103,9 @@ function load_productos(){
 function render_productos(tabla, productos){
     let temp = ''
     productos.forEach(prod => {
-        const imagen = prod.imagen[0] == "/" ? prod.imagen : `/${prod.imagen}`
-
         temp += `<tr id="${prod.uuid}" class="border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted">
         <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0">
-          <img src="${imagen}" width="40" height="40" alt="Product image"
+          <img src="${prod.imagen}" width="40" height="40" alt="Product image"
             class="aspect-square rounded-md object-cover" />
         </td>
         <td class="p-4 align-middle [&amp;:has([role=checkbox])]:pr-0 font-medium">${prod.nombre}</td>

@@ -6,8 +6,7 @@ def create_app():
     app.config['SECRET_KEY'] = token_hex(16)
 
     from .public import public_routes
-    from .admin import admin_routes, admin_api
-    
+    from .admin import admin_routes, admin_api    
 
     app.register_blueprint(public_routes)
     app.register_blueprint(admin_routes, url_prefix='/admin')
