@@ -41,28 +41,24 @@
     </header>
     <main class="flex flex-col text-[#444444]">
         <section class="w-full py-12 md:py-24 lg:py-32">
-            <div class="container grid gap-6 lg:grid-cols-[1fr_550px] lg:gap-12 xl:grid-cols-[1fr_650px]">
+            <div class="container p-4 grid gap-6 lg:grid-cols-[1fr_550px] lg:gap-12 xl:grid-cols-[1fr_650px]">
                 <img src="{{url_for('static', filename='img/principal.jpg')}}" width="550" height="550"
                     alt="Hero Product"
                     class="mx-auto aspect-square overflow-hidden rounded-xl object-cover sm:w-full" />
                 <div class="flex flex-col justify-center space-y-4">
                     <div class="space-y-2">
                         <h1 class="text-black text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                            Discover the latest fashion trends
+                            Descubre las nuevas tendencias en productos
                         </h1>
-                        <p class="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-400">
-                            Browse our curated collection of high-quality apparel and accessories for all your style
+                        <p class="max-w-[600px] text-gray-500 md:text-xl dark:text-gray-800">
+                            Busca y encuentra los productos que necesites, manteniendo lo ecológico y ayudando al medio ambiente
                             needs.
                         </p>
                     </div>
                     <div class="flex flex-col gap-2 min-[400px]:flex-row">
                         <a class="inline-flex h-10 items-center justify-center rounded-md bg-gray-900 px-8 text-sm font-medium text-gray-50 shadow transition-colors hover:bg-gray-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90 dark:focus-visible:ring-gray-300"
-                            href="#">
-                            Shop Now
-                        </a>
-                        <a class="text-white inline-flex h-10 items-center justify-center rounded-md border border-gray-200 border-gray-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gray-950 disabled:pointer-events-none disabled:opacity-50 dark:border-gray-800 dark:border-gray-800 dark:bg-gray-950 dark:hover:bg-gray-800 dark:hover:text-gray-50 dark:focus-visible:ring-gray-300"
-                            href="#">
-                            Learn More
+                            href="#productos">
+                            Empieza a comprar
                         </a>
                     </div>
                 </div>
@@ -72,10 +68,10 @@
             <div class="container">
                 <div class="flex flex-col items-center justify-center space-y-4 text-center">
                     <div class="space-y-2">
-                        <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Featured Products</h2>
+                        <h2 class="text-3xl text-white font-bold tracking-tighter sm:text-5xl">Nuestros Productos</h2>
                         <p
                             class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                            Discover our curated selection of the latest and greatest fashion items.
+                            Obten lo que siemrpe buscaste y 100% eco-friendly
                         </p>
                     </div>
                 </div>
@@ -106,7 +102,7 @@
                 <div class="space-y-2">
                     <h2 class="text-3xl font-bold tracking-tighter sm:text-5xl">Categorias</h2>
                     <p
-                        class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
+                        class="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-800">
                         Explora las categorias que desees
                     </p>
                 </div>
@@ -153,12 +149,10 @@
         <section class="w-full py-12 md:py-24 lg:py-32 bg-[#141E46] dark:bg-gray-800">
             <div class="container grid items-center gap-6 px-4 md:px-6 lg:grid-cols-2 lg:gap-10">
                 <div class="space-y-2">
-                    <h2 class="text-3xl font-bold tracking-tighter md:text-4xl/tight">Stay up-to-date with our
-                        newsletter</h2>
+                    <h2 class="text-3xl text-white font-bold tracking-tighter md:text-4xl/tight">Mantente al d&iacute;a con nuestra newsletter</h2>
                     <p
                         class="max-w-[600px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed dark:text-gray-400">
-                        Subscribe to our newsletter to receive the latest updates, exclusive offers, and fashion
-                        inspiration.
+                        Subscribete a nuestra newsletter para recibir información a cerca de nuestros productos, pr&oacute;ximos eventos o noticias importantes.
                     </p>
                 </div>
                 <div class="w-full max-w-sm space-y-2">
@@ -167,9 +161,9 @@
                             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 max-w-lg flex-1"
                             placeholder="Enter your email" type="email" />
                         <button
-                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2"
+                            class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-emerald-600 text-white hover:bg-emerald-600/90 h-10 px-4 py-2"
                             type="submit">
-                            Subscribe
+                            Subscribete
                         </button>
                     </form>
                     <p class="text-xs text-gray-500 dark:text-gray-400">
